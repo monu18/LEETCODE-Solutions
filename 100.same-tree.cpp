@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=94 lang=cpp
+ * @lc app=leetcode id=100 lang=cpp
  *
- * [94] Binary Tree Inorder Traversal
+ * [100] Same Tree
  */
 
 // @lc code=start
@@ -18,23 +18,16 @@
  */
 class Solution {
 public:
-    vector<int> inorderTraversal(TreeNode* root) {
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+    if(!p || !q)
+        return p == q;
 
-        vector<int> ans;
-        preorder(root, ans);
-        return ans;
-        
-        
+    return p->val == q->val &&
+           isSameTree(p->left, q->left) &&
+           isSameTree(p->right, q->right);
     }
-    void preorder(TreeNode* root, vector<int>& ans) {
 
-        if(root == nullptr) return;
 
-        preorder(root->left, ans);
-        ans.push_back(root->val);
-        preorder(root->right, ans);
-        
-    }
 };
 // @lc code=end
 
